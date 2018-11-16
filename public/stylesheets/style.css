@@ -1,8 +1,49 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  padding-top: 100px;
 }
 
 a {
-  color: #00B7FF;
+  color: white;
 }
+
+
+/*
+  Navigation Bar Styles
+ */
+
+.logo {
+  border-radius: 10px;
+}
+
+.navStyle {
+  font-family: "Georgia", Arial;
+  background-color: midnightblue;
+  line-height: 150px;
+  height: 95px;
+  align-content: center;
+}
+.navLink {
+  padding: 20px;
+  font-size: 20px;
+}
+
+#navList a:hover {
+  background-color: white;
+  border-radius: 30px;
+}
+
+.tuneActiveAbout {
+  color: midnightblue;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.active-page {
+  background-color: white;
+  border-radius: 30px;
+}
+
+
