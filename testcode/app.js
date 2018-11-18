@@ -105,7 +105,7 @@ app.get('/callback', function(req, res) {
         });
 
         // we can also pass the token to the browser to make requests from there
-          res.redirect('/about.html')
+          res.redirect('/home.html')
           /*
         res.redirect('/#' +
           querystring.stringify({
@@ -148,4 +148,6 @@ app.get('/refresh_token', function(req, res) {
 
 console.log('Listening on 8888');
 app.listen(8888);
+
+module.exports = app;
 
