@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="67747d8a-58cc-46b2-9631-689bbfef690a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/testcode/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/testcode/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -50,21 +50,21 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="css" value="1601" />
-          <entry key="env" value="101" />
+          <entry key="env" value="102" />
           <entry key="gitignore" value="17" />
           <entry key="html" value="2615" />
-          <entry key="js" value="273" />
+          <entry key="js" value="347" />
           <entry key="json" value="2" />
           <entry key="www" value="105" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key=".env file" value="88" />
+          <entry key=".env file" value="89" />
           <entry key="CSS" value="1601" />
           <entry key="HTML" value="2615" />
           <entry key="JSON" value="2" />
-          <entry key="JavaScript" value="378" />
+          <entry key="JavaScript" value="452" />
           <entry key="PLAIN_TEXT" value="30" />
         </counts>
       </usages-collector>
@@ -75,15 +75,19 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/testcode/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="20" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
+            <state relative-caret-position="289">
+              <caret line="17" column="93" selection-start-line="17" selection-start-column="93" selection-end-line="17" selection-end-column="93" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/testcode/.env">
-          <provider selected="true" editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" column="11" selection-start-line="2" selection-start-column="11" selection-end-line="2" selection-end-column="11" />
+            </state>
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -176,6 +180,7 @@
       <find>app.use</find>
       <find>loggedin</find>
       <find>8888</find>
+      <find>redirect_uri</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -206,6 +211,7 @@
         <option value="$PROJECT_DIR$/testcode/public/playlist.html" />
         <option value="$PROJECT_DIR$/testcode/public/tags.html" />
         <option value="$PROJECT_DIR$/testcode/public/nav.html" />
+        <option value="$PROJECT_DIR$/testcode/.env" />
         <option value="$PROJECT_DIR$/testcode/app.js" />
       </list>
     </option>
@@ -334,7 +340,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="37486000" />
+    <option name="totallyTimeSpent" value="37883000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -589,12 +595,16 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/testcode/.env">
-      <provider selected="true" editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="11" selection-start-line="2" selection-start-column="11" selection-end-line="2" selection-end-column="11" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/testcode/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="20" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
+        <state relative-caret-position="289">
+          <caret line="17" column="93" selection-start-line="17" selection-start-column="93" selection-end-line="17" selection-end-column="93" />
         </state>
       </provider>
     </entry>
