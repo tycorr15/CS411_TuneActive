@@ -35,15 +35,69 @@ a {
   border-radius: 30px;
 }
 
-.tuneActiveAbout {
-  color: midnightblue;
-  font-weight: bold;
-  font-style: italic;
-}
-
 .active-page {
   background-color: white;
   border-radius: 30px;
 }
 
+/*
+  Home Page
+ */
 
+.home-button {
+  border-radius: 60px;
+  border-style: solid;
+  font-size: 50px;
+  display: block;
+  margin: auto;
+  height: 400px;
+  width: 400px;
+}
+
+.home-button i{
+  font-size: 100px;
+  padding-bottom: 50px;
+}
+
+.home-button:hover {
+  border-width: 10px;
+}
+
+.playlist-button {
+  background-color: forestgreen;
+  color: white;
+  border-color: forestgreen;
+}
+
+.playlist-button:hover {
+  background-color: white;
+  color: forestgreen;
+}
+
+.tags-button {
+  background-color: darkorange;
+  color: white;
+  border-color: darkorange;
+}
+
+.tags-button:hover {
+  background-color: white;
+  color: darkorange;
+}
+
+.homeHeader {
+  color: midnightblue;
+  font-weight: bold;
+  font-style: italic;
+  font-size: 70px;
+}
+
+/*
+  About Page
+ */
+
+.tuneActiveAbout {
+  color: midnightblue;
+  font-weight: bold;
+  font-style: italic;
+}
