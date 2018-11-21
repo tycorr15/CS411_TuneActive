@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="67747d8a-58cc-46b2-9631-689bbfef690a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authorization_code/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/authorization_code/app.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -31,7 +32,7 @@
           <entry key="gitignore" value="1" />
           <entry key="html" value="18" />
           <entry key="jpg" value="1" />
-          <entry key="js" value="12" />
+          <entry key="js" value="13" />
           <entry key="json" value="5" />
           <entry key="www" value="4" />
         </counts>
@@ -43,7 +44,7 @@
           <entry key="HTML" value="18" />
           <entry key="Image" value="1" />
           <entry key="JSON" value="5" />
-          <entry key="JavaScript" value="16" />
+          <entry key="JavaScript" value="17" />
           <entry key="PLAIN_TEXT" value="2" />
         </counts>
       </usages-collector>
@@ -53,7 +54,7 @@
           <entry key="env" value="102" />
           <entry key="gitignore" value="17" />
           <entry key="html" value="2615" />
-          <entry key="js" value="347" />
+          <entry key="js" value="377" />
           <entry key="json" value="2" />
           <entry key="www" value="105" />
         </counts>
@@ -64,7 +65,7 @@
           <entry key="CSS" value="1601" />
           <entry key="HTML" value="2615" />
           <entry key="JSON" value="2" />
-          <entry key="JavaScript" value="452" />
+          <entry key="JavaScript" value="482" />
           <entry key="PLAIN_TEXT" value="30" />
         </counts>
       </usages-collector>
@@ -72,11 +73,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/testcode/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="17" column="93" selection-start-line="17" selection-start-column="93" selection-end-line="17" selection-end-column="93" />
+            <state relative-caret-position="-1189">
+              <caret line="17" column="61" selection-start-line="17" selection-start-column="61" selection-end-line="17" selection-end-column="61" />
             </state>
           </provider>
         </entry>
@@ -99,11 +100,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/testcode/public/about.html">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/authorization_code/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="52" selection-start-line="14" selection-start-column="52" selection-end-line="14" selection-end-column="52" />
+            <state relative-caret-position="255">
+              <caret line="15" column="29" selection-start-line="15" selection-start-column="29" selection-end-line="15" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -202,7 +203,6 @@
         <option value="$PROJECT_DIR$/routes/index.js" />
         <option value="$PROJECT_DIR$/public/about.html" />
         <option value="$PROJECT_DIR$/routes/users.js" />
-        <option value="$PROJECT_DIR$/authorization_code/app.js" />
         <option value="$PROJECT_DIR$/authorization_code/public/about.html" />
         <option value="$PROJECT_DIR$/public/home.html" />
         <option value="$PROJECT_DIR$/testcode/package.json" />
@@ -213,6 +213,7 @@
         <option value="$PROJECT_DIR$/testcode/public/nav.html" />
         <option value="$PROJECT_DIR$/testcode/.env" />
         <option value="$PROJECT_DIR$/testcode/app.js" />
+        <option value="$PROJECT_DIR$/authorization_code/app.js" />
       </list>
     </option>
   </component>
@@ -340,7 +341,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="37883000" />
+    <option name="totallyTimeSpent" value="38105000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -483,13 +484,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/authorization_code/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-876">
-          <caret line="38" column="7" selection-start-line="38" selection-end-line="38" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/authorization_code/public/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="520">
@@ -603,8 +597,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/testcode/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="93" selection-start-line="17" selection-start-column="93" selection-end-line="17" selection-end-column="93" />
+        <state relative-caret-position="-1189">
+          <caret line="17" column="61" selection-start-line="17" selection-start-column="61" selection-end-line="17" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/authorization_code/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="29" selection-start-line="15" selection-start-column="29" selection-end-line="15" selection-end-column="29" />
         </state>
       </provider>
     </entry>
