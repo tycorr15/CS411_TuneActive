@@ -41,6 +41,74 @@ a {
 }
 
 /*
+  Login Page
+ */
+
+.log {
+  width: 400px;
+  height: 200px;
+  background-color: lightskyblue;
+  border-radius: 20px;
+  border-color: midnightblue;
+  border-width: 5px;
+  border-style: solid;
+  z-index: 15;
+  top: 50%;
+  left: 50%;
+  margin: -200px 0 0 -200px;
+  position: absolute;
+  display: inline-block;
+  text-align: center;
+}
+
+.img-back {
+  background: url(/../images/backdrop.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  /*
+   background: url(/../images/backdrop.jpg);
+  background-size: 1410px 941px;
+  background-repeat: no-repeat;
+  background-position: top;
+  */
+}
+.index-btn {
+  color: white;
+  background-color: midnightblue;
+  border-color: midnightblue;
+  display: inline-block;
+  margin-bottom: 0;
+  font-weight: 400;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  padding: 6px 12px;
+  font-size: 20px;
+  line-height: 1.42857143;
+  border-radius: 4px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.index-btn:hover {
+  color: midnightblue;
+  background-color: white;
+  border-color: midnightblue;
+  border-width: 3px;
+  text-decoration: none;
+}
+
+.index-title {
+  color: midnightblue;
+}
+
+/*
   Home Page
  */
 
