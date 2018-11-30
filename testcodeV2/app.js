@@ -4,13 +4,14 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var request = require('request'); // "Request" library
+var cors = require('cors');
 
 var indexRouter = require('./routes/index');
 var homeRouter = require('./routes/home');
 var playlistRouter = require('./routes/playlist');
 var tagsRouter = require('./routes/tags');
 var aboutRouter = require('./routes/about');
-var loginRouter = require('./routes/login');
+//var loginRouter = require('./routes/login');
 var usersRouter = require('./routes/users');
 
 var app = express();
@@ -41,8 +42,42 @@ app.use('/about', aboutRouter);
 //app.use('/callback', loginRouter);
 app.use('/users', usersRouter);
 
+
+/* FOR TEAM TO READ!!!!!!!!!
+
+    Okay, I am going to explain what is going on.
+
+    -In the views folder, index.pug represents the login page. Notice the button has an href=/login
+    -This will hit the app.get('/login'...) route below. This calls the spotify url to authorize a user,
+    and then it hits the callback URL which is localhost:7542/callback
+    -When this happens, it hits the callback route below. A lot of this code I am still figuring out because it came
+    from spotify.
+    -However, notice we first make a post request to 'post' our client id and client secret in order for spotify
+    to spit us back a token
+    -Then, we do a get request and grab the user's data as a JSON object
+    -I wrote a few console.logs, and I also grab body.id which is the username
+    -Lastly, res.render('home', {username: user}); renders the home.pug page and notice it grabs that username
+    variable and displays it on the navigation bar (defined in layout.pug).
+
+    -Here's my issues:
+    Notice the URL is some weird /callback?code=... and not /home
+    Also, if you go to any other route, we lose the username in the navbar, like the username is no longer 'rendered'
+
+    Possible fixes?
+    -This might have something to do with we have to use the next() callback function and do a chain of middleware calls
+    to functions, and we keep passing the data we want
+    -Check out this link: https://stackoverflow.com/questions/37973266/node-101-changing-the-nav-bar-when-a-user-is-logged-in
+        I wonder if we have to use res.locals or something, or look up sessions, like when someone logs in we start
+        a session and have data on hand
+
+
+    NOTE: here is an html to pug converter if you need it:
+        https://html-to-pug.com/
+ */
+
+
 /* GET home page. */
-app.get('/login', function(req, res) {
+app.get('/login', function (req, res) {
     var state = generateRandomString(16);
     res.cookie(stateKey, state);
 
@@ -58,7 +93,7 @@ app.get('/login', function(req, res) {
         }));
 });
 
-app.get('/callback', function(req, res) {
+app.get('/callback', function (req, res) {
 
     // your application requests refresh and access tokens
     // after checking the state parameter
@@ -86,8 +121,7 @@ app.get('/callback', function(req, res) {
             },
             json: true
         };
-
-        request.post(authOptions, function(error, response, body) {
+        request.post(authOptions, function (error, response, body) {
             if (!error && response.statusCode === 200) {
 
                 var access_token = body.access_token,
@@ -95,41 +129,36 @@ app.get('/callback', function(req, res) {
                 console.log(access_token) // I ADDED THIS
                 var options = {
                     url: 'https://api.spotify.com/v1/me',
-                    headers: { 'Authorization': 'Bearer ' + access_token },
+                    headers: {'Authorization': 'Bearer ' + access_token},
                     json: true
                 };
-                var user = '';
                 // use the access token to access the Spotify Web API
-                request.get(options, function(error, response, body) {
+                request.get(options, function (error, response, body) {
                     user = body.id;
-                    res.render('home', { username: user });
                     console.log(body);
                     console.log(body.id);
+                    console.log('RENDERING');
+                    res.render('home', {username: user});
+                    //res.redirect('/home')
                 });
-
-                // we can also pass the token to the browser to make requests from there
-                //res.redirect('/home.html')
-                console.log("AM I here?")
-
-
             } else {
-                console.log("where the fuck am i")
                 res.redirect('/#' +
                     querystring.stringify({
                         error: 'invalid_token'
                     }));
             }
         });
+
     }
 });
 
-app.get('/refresh_token', function(req, res) {
+app.get('/refresh_token', function (req, res) {
 
     // requesting access token from refresh token
     var refresh_token = req.query.refresh_token;
     var authOptions = {
         url: 'https://accounts.spotify.com/api/token',
-        headers: { 'Authorization': 'Basic ' + (new Buffer(client_id + ':' + client_secret).toString('base64')) },
+        headers: {'Authorization': 'Basic ' + (new Buffer(client_id + ':' + client_secret).toString('base64'))},
         form: {
             grant_type: 'refresh_token',
             refresh_token: refresh_token
@@ -137,7 +166,7 @@ app.get('/refresh_token', function(req, res) {
         json: true
     };
 
-    request.post(authOptions, function(error, response, body) {
+    request.post(authOptions, function (error, response, body) {
         if (!error && response.statusCode === 200) {
             var access_token = body.access_token;
             res.send({
@@ -168,7 +197,7 @@ app.use(function (err, req, res, next) {
  * @param  {number} length The length of the string
  * @return {string} The generated string
  */
-var generateRandomString = function(length) {
+var generateRandomString = function (length) {
     var text = '';
     var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
@@ -177,8 +206,6 @@ var generateRandomString = function(length) {
     }
     return text;
 };
-
-
 
 
 module.exports = app;

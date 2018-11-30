@@ -62,7 +62,7 @@ a {
 }
 
 .img-back {
-  background: url(/../images/backdrop.jpg) no-repeat center center fixed;
+  background: url(/../images/backdrop-gray.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
