@@ -21,6 +21,7 @@ nav.navbar.navStyle.navbar-fixed-top
                 li.navLink
                     a(href='/about' class=(name === "about" ? "active-page" : undefined)) About
                 li.navLink
-                    a Welcome #{username}
+                    a Welcome #{username} from #{country}
+
     body
         block content

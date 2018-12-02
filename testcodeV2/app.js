@@ -2,6 +2,7 @@ var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
+var cookieSession = require('cookie-session')
 var logger = require('morgan');
 var request = require('request'); // "Request" library
 var cors = require('cors');
@@ -31,6 +32,12 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
+app.use(cookieSession({
+    name: 'session',
+    keys: ['hey'],
+    // Cookie Options
+    maxAge: 24 * 60 * 60 * 1000 // 24 hours
+}))
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
@@ -134,11 +141,15 @@ app.get('/callback', function (req, res) {
                 };
                 // use the access token to access the Spotify Web API
                 request.get(options, function (error, response, body) {
+                    req.session.userId = body.id;
+                    req.session.loc = body.country;
+                    console.log('session userId:' + req.session.userId);
                     user = body.id;
                     console.log(body);
                     console.log(body.id);
                     console.log('RENDERING');
-                    res.render('home', {username: user});
+                    res.render('home', {username: req.session.userId, country: req.session.loc});
+                    //res.render('home', {username: user});
                     //res.redirect('/home')
                 });
             } else {
