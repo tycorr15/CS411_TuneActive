@@ -28,6 +28,7 @@ var stateKey = 'spotify_auth_state';
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
+app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
@@ -82,6 +83,57 @@ app.use('/users', usersRouter);
         https://html-to-pug.com/
  */
 
+app.get('/search', function(req, res, next) {
+    console.log("SEARCHING");
+
+    var request = require('request');
+
+    var options = { method: 'GET',
+        url: 'https://api.spotify.com/v1/search',
+        qs:
+            { q: 'Crying Lightning',
+                type: 'track',
+                limit: '10'},
+        headers:
+            { 'Postman-Token': '2a74b03f-4fda-41d2-ac01-c5cc0c9a7630',
+                'cache-control': 'no-cache',
+                Authorization: 'Bearer  ' + req.session.access_token },
+        json: true
+    };
+
+    request(options, function (error, response, body) {
+        if (error) throw new Error(error);
+
+        var itemArray = body.tracks.items;
+        var result = [];
+
+        for (var i = 0; i < itemArray.length; i++) {
+            result.push([itemArray[i].name, itemArray[i].artists[0].name, itemArray[i].id]);
+        }
+
+        console.log('\n\n\n')
+        result.forEach(function(element) {
+            console.log(element[1] + ' - ' + element[0] + ' with ID: ' + element[2]);
+        });
+        console.log('\n\n\n')
+
+
+        //console.log(body);
+        //console.log(body.tracks);
+
+        //var tester = JSON.parse(body);
+        res.render('tags', { name: 'tags', username: req.session.userId, country: req.session.loc, songs: result});
+    });
+
+});
+
+app.post('/update', function(req, res) {
+    var songsAdded = req.body.songIds;
+
+    console.log(songsAdded);
+
+    res.render('tags', { name: 'tags', username: req.session.userId, country: req.session.loc, ids: songsAdded});
+});
 
 /* GET home page. */
 app.get('/login', function (req, res) {
@@ -133,6 +185,7 @@ app.get('/callback', function (req, res) {
 
                 var access_token = body.access_token,
                     refresh_token = body.refresh_token;
+                req.session.access_token = access_token;
                 console.log(access_token) // I ADDED THIS
                 var options = {
                     url: 'https://api.spotify.com/v1/me',

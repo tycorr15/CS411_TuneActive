@@ -19,7 +19,7 @@ a {
 }
 
 .navStyle {
-  font-family: "Georgia", Arial;
+  font-family: "Arial";
   background-color: midnightblue;
   line-height: 150px;
   height: 95px;
@@ -38,6 +38,19 @@ a {
 .active-page {
   background-color: white;
   border-radius: 30px;
+}
+
+.logstatus {
+  float: right;
+  color: #337ab7;
+  font-size: 20px;
+  margin-top: -30px;
+}
+
+#user {
+  color: white;
+  font-weight: bold;
+  font-style: italic;
 }
 
 /*
@@ -168,4 +181,14 @@ a {
   color: midnightblue;
   font-weight: bold;
   font-style: italic;
+}
+
+/*
+  Playlist Page
+ */
+
+.scrollable {
+  overflow: scroll;
+  height: 100%;
+  width: 100%;
 }
