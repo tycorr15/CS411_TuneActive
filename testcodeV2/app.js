@@ -128,7 +128,12 @@ app.get('/search', function(req, res, next) {
 });
 
 app.post('/update', function(req, res) {
-    var songsAdded = req.body.songIds;
+    console.log(req.body);
+    var songsAdded = req.body['songIds[]'];
+
+    /*
+    update database
+     */
 
     console.log(songsAdded);
 

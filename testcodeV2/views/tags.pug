@@ -45,8 +45,17 @@ block content
         };
 
         var addSongs = function () {
+            //var songsToAdd = ['Test', 'Hey'];
+            //$.post('/update', {songIds: songsToAdd, tester: 5});
+
             var songsToAdd = [];
+            $("input:checkbox[name=songTitles]:checked").each(function () {
+                songsToAdd.push($(this).val());
+            });
+            /*
+            console.log(document.getElementById("songTitles"))
             var songForm = document.forms['searchRes'].elements['songTitles'];
+            console.log(document.forms['searchRes'].elements);
             var x = $(".searchRes input[type='checkbox']:checked")
             console.log(x);
             console.log(songForm);
@@ -56,5 +65,8 @@ block content
                     songsToAdd.push(songForm[i].value);
                 }
             }
+            */
+            console.log(songsToAdd);
             $.post('/update', {songIds: songsToAdd});
+
         };
