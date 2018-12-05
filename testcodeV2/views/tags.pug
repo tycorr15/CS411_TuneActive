@@ -4,34 +4,18 @@ block content
     h1.text-center.homeHeader.subHeader Manage Your Tags
     hr
 
-    button(onclick='search()').searchIcon
-        i.fas.fa-search
-    input#searchField(type='text' placeholder='Search for a song').searchBox
+    .row
+        .col-md-7
+            button(onclick='search()').searchIcon
+                i.fas.fa-search
+            input#searchField(type='text' placeholder='Search for a song').searchBox
+        .col-md-5.limitInput
+            h2.numResultsHeader <i class="fas fa-hashtag"></i> (1-50)
+            input#limitField(type='text' placeholder='Default: 10').limitBox
 
-    br
-    br
+    hr
 
     #searchResults
-
-    if typeof(songs) !== 'undefined'
-        h3.text-left Search results:
-
-        //form(name='searchRes')
-        //ul
-        //    each val in songs
-        //        input(type='checkbox' name='songTitles' value=val[2])
-        //        |  #{val[0]} by #{val[1]}
-        //        br
-
-
-        br
-        h4 Select your Intensity
-        select#dropdown
-            option(value='High Intensity') High Intensity
-            option(value='Medium Intensity') Medium Intensity
-            option(value='Low Intensity') Low Intensity
-        br
-        button(onclick="addSongs()") Add Songs
 
 
     script(type='text/javascript').
@@ -39,6 +23,7 @@ block content
 
         var search = function () {
             var mysearchfield = $('#searchField').val();
+            var mylimitfield = $('#limitField').val();
             if (mysearchfield === '') {
                 alert("Did not enter anything into field");
             } else {
@@ -52,34 +37,33 @@ block content
                 $.ajax({
                     type: "POST",
                     url: "/search",
-                    data: {queryVal: mysearchfield},
+                    data: {queryVal: mysearchfield, limitVal: mylimitfield},
                     success: function (data) {
-                        console.log("I got this data:")
                         var searchArr = data.searchResults;
+                        var result = "<h2 class='searchHeader'>Search Results:</h2><hr><ul>";
+
                         console.log(searchArr);
-                        var result = "<ul><h3 class='text-left'>Search Results:</h3>";
 
                         for (var i = 0; i < searchArr.length; i++) {
                             var songName = searchArr[i][0], artistName = searchArr[i][1], songId = searchArr[i][2];
-                            result += "<input type='checkbox' name='songTitles' value=" + songId + "> " + songName + " by " + artistName + "</br>";
+                            result += "<input type='checkbox' name='songTitles' value=" + songId + " class='songCheckBox'> <span class='artistName'>";
+                            result += artistName + " - </span><span class='songName'>" + songName + "</span></br>";
                         }
                         result += "</ul>";
-                        result += "</br><h4>Select your Intensity</h4><select id='dropdown'>";
+                        result += "<hr><h2 class='searchHeader'>Select your Intensity</h2><select id='dropdown'>";
                         result += "<option value='High Intensity'>High Intensity</option><option value='Medium Intensity'>Medium Intensity</option><option value='Low Intensity'>Low Intensity</option>";
-                        result += "</select></br><button onclick='addSongs()'>Add Songs</button>";
+                        result += "</select></br></br><div class='btnSection'><button onclick='addSongs()' class='addSongBtn'><i class=\"fas fa-plus\"></i> Add Songs</button></div>";
                         console.log(result);
 
-                        //$('searchResults').append(result);
                         document.getElementById('searchResults').innerHTML = result;
-                        console.log("Finished attaching to div")
-                        //$.get('/displayResults');
-                    },
+                    } /*,
                     error: function (jqXHR, textStatus, err) {
                         alert('text status ' + textStatus + ', err ' + err)
-                    }
+                    }*/
                 });
 
             }
+
         }
         var addSongs = function () {
             var songsToAdd = [];

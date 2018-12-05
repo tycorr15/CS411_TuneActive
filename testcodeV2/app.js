@@ -49,17 +49,24 @@ app.use('/about', aboutRouter);
 app.use('/users', usersRouter);
 
 app.post('/search', function(req, res, next) {
-    console.log("SEARCHING");
     console.log(req.body);
     var queryVal = req.body['queryVal'];
-    console.log(queryVal);
+    var limitVal = req.body['limitVal'];
+
+    // check limit input
+    if (limitVal === undefined) {
+        limitVal = '10';
+    } else if (isNaN(Number(limitVal))  || Number(limitVal) < 1 || Number(limitVal) > 50) {
+        limitVal = '10';
+    }
+
 
     var options = { method: 'GET',
         url: 'https://api.spotify.com/v1/search',
         qs:
             { q: queryVal,
                 type: 'track',
-                limit: '10'},
+                limit: limitVal},
         headers:
             { 'Postman-Token': '2a74b03f-4fda-41d2-ac01-c5cc0c9a7630',
                 'cache-control': 'no-cache',
@@ -77,28 +84,15 @@ app.post('/search', function(req, res, next) {
             result.push([itemArray[i].name, itemArray[i].artists[0].name, itemArray[i].id]);
         }
 
-        console.log('\n\n\n')
+        console.log('\n\n')
         result.forEach(function(element) {
             console.log(element[1] + ' - ' + element[0] + ' with ID: ' + element[2]);
         });
-        console.log('\n\n\n')
+        console.log('\n\n')
 
-
-        //console.log(body);
-        //console.log(body.tracks);
-
-        //var tester = JSON.parse(body);
         console.log("Sending result back");
-        req.session.currentSearchItems = result;
         res.json({ searchResults: result });
-        //res.render('tags', { name: 'tags', username: req.session.userId, country: req.session.loc, songs: result});
     });
-});
-
-app.get('/displayResults', function(req, res, next) {
-    console.log("About to render page");
-    console.log(req.session.currentSearchItems);
-    res.render('tags', { name: 'tags', username: req.session.userId, country: req.session.loc, songs: req.session.currentSearchItems});
 });
 
 app.post('/update', function(req, res) {
