@@ -3,13 +3,10 @@ extends layout
 block content
     h1.text-center Tags Page
 
-    textarea#mytext
     select#dropdown
-        option(value='') None
         option(value='High Intensity') High Intensity
+        option(value='Medium Intensity') High Intensity
         option(value='Low Intensity') Low Intensity
-        option(value='Pushups') Pushups
-        option(value='Cardio') Cardio
 
     a(href='/search') Click here to search
 
@@ -37,12 +34,7 @@ block content
 
 
     script(type='text/javascript').
-        var mytextbox = document.getElementById('mytext');
         var mydropdown = document.getElementById('dropdown');
-        mydropdown.onchange = function () {
-            //mytextbox.value = mytextbox.value + this.value; //to appened
-            mytextbox.innerHTML = this.value;
-        };
 
         var addSongs = function () {
             //var songsToAdd = ['Test', 'Hey'];
@@ -52,21 +44,8 @@ block content
             $("input:checkbox[name=songTitles]:checked").each(function () {
                 songsToAdd.push($(this).val());
             });
-            /*
-            console.log(document.getElementById("songTitles"))
-            var songForm = document.forms['searchRes'].elements['songTitles'];
-            console.log(document.forms['searchRes'].elements);
-            var x = $(".searchRes input[type='checkbox']:checked")
-            console.log(x);
-            console.log(songForm);
-            console.log(document.forms['searchRes'].elements['songTitles'])
-            for (var i = 0; i < songForm.length; i++) {
-                if (songForm[i].checked) {
-                    songsToAdd.push(songForm[i].value);
-                }
-            }
-            */
+
             console.log(songsToAdd);
-            $.post('/update', {songIds: songsToAdd});
+            $.post('/update', {songIds: songsToAdd, tag: mydropdown.value, success: function () { window.location.href = "/tags"; }});
 
         };

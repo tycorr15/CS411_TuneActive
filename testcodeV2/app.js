@@ -6,6 +6,7 @@ var cookieSession = require('cookie-session')
 var logger = require('morgan');
 var request = require('request'); // "Request" library
 var cors = require('cors');
+var mysql = require('mysql');
 
 var indexRouter = require('./routes/index');
 var homeRouter = require('./routes/home');
@@ -46,42 +47,7 @@ app.use('/home', homeRouter);
 app.use('/playlist', playlistRouter);
 app.use('/tags', tagsRouter);
 app.use('/about', aboutRouter);
-//app.use('/login', loginRouter);
-//app.use('/callback', loginRouter);
 app.use('/users', usersRouter);
-
-
-/* FOR TEAM TO READ!!!!!!!!!
-
-    Okay, I am going to explain what is going on.
-
-    -In the views folder, index.pug represents the login page. Notice the button has an href=/login
-    -This will hit the app.get('/login'...) route below. This calls the spotify url to authorize a user,
-    and then it hits the callback URL which is localhost:7542/callback
-    -When this happens, it hits the callback route below. A lot of this code I am still figuring out because it came
-    from spotify.
-    -However, notice we first make a post request to 'post' our client id and client secret in order for spotify
-    to spit us back a token
-    -Then, we do a get request and grab the user's data as a JSON object
-    -I wrote a few console.logs, and I also grab body.id which is the username
-    -Lastly, res.render('home', {username: user}); renders the home.pug page and notice it grabs that username
-    variable and displays it on the navigation bar (defined in layout.pug).
-
-    -Here's my issues:
-    Notice the URL is some weird /callback?code=... and not /home
-    Also, if you go to any other route, we lose the username in the navbar, like the username is no longer 'rendered'
-
-    Possible fixes?
-    -This might have something to do with we have to use the next() callback function and do a chain of middleware calls
-    to functions, and we keep passing the data we want
-    -Check out this link: https://stackoverflow.com/questions/37973266/node-101-changing-the-nav-bar-when-a-user-is-logged-in
-        I wonder if we have to use res.locals or something, or look up sessions, like when someone logs in we start
-        a session and have data on hand
-
-
-    NOTE: here is an html to pug converter if you need it:
-        https://html-to-pug.com/
- */
 
 app.get('/search', function(req, res, next) {
     console.log("SEARCHING");
@@ -130,14 +96,54 @@ app.get('/search', function(req, res, next) {
 app.post('/update', function(req, res) {
     console.log(req.body);
     var songsAdded = req.body['songIds[]'];
+    var tag = req.body['tag'];
 
+    //mysql code
+    var connection = mysql.createConnection( {
+        host: 'localhost',
+        user: 'root',
+        password: '',
+        database: 'TuneActiveDB'
+    });
+
+    connection.connect(function(error) {
+        if (!!error) {
+            console.log('Error');
+        }
+        else {
+            console.log('Connected');
+        }
+
+    });
+
+    var username_insert = req.session.userId;
+    for (var i=0; i<songsAdded.length; i++)
+    {
+        var min = 1;
+        var max = 100000000;
+        // generates a random number between min and max
+        var id = Math.floor(Math.random() * (max - min)) + min;
+        var song_insert = songsAdded[i];
+        connection.query("insert into mainTable values ("+id+", '"+username_insert+"', '"+song_insert+"', '"+tag+"')",
+            function(error, result, field) {
+                // callback function after query is done
+                if (!!error) {
+                    console.log('Error with query 1');
+                    console.log(error);
+                }
+                else {
+                    console.log('Query Insert executed \n');
+                }
+            });
+    }
     /*
     update database
      */
 
     console.log(songsAdded);
+    console.log(tag);
 
-    res.render('tags', { name: 'tags', username: req.session.userId, country: req.session.loc, ids: songsAdded});
+    res.send('done');
 });
 
 /* GET home page. */
