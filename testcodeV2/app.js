@@ -13,7 +13,6 @@ var homeRouter = require('./routes/home');
 var playlistRouter = require('./routes/playlist');
 var tagsRouter = require('./routes/tags');
 var aboutRouter = require('./routes/about');
-//var loginRouter = require('./routes/login');
 var usersRouter = require('./routes/users');
 
 var app = express();
@@ -49,15 +48,16 @@ app.use('/tags', tagsRouter);
 app.use('/about', aboutRouter);
 app.use('/users', usersRouter);
 
-app.get('/search', function(req, res, next) {
+app.post('/search', function(req, res, next) {
     console.log("SEARCHING");
-
-    var request = require('request');
+    console.log(req.body);
+    var queryVal = req.body['queryVal'];
+    console.log(queryVal);
 
     var options = { method: 'GET',
         url: 'https://api.spotify.com/v1/search',
         qs:
-            { q: 'Crying Lightning',
+            { q: queryVal,
                 type: 'track',
                 limit: '10'},
         headers:
@@ -88,20 +88,29 @@ app.get('/search', function(req, res, next) {
         //console.log(body.tracks);
 
         //var tester = JSON.parse(body);
-        res.render('tags', { name: 'tags', username: req.session.userId, country: req.session.loc, songs: result});
+        console.log("Sending result back");
+        req.session.currentSearchItems = result;
+        res.json({ searchResults: result });
+        //res.render('tags', { name: 'tags', username: req.session.userId, country: req.session.loc, songs: result});
     });
+});
 
+app.get('/displayResults', function(req, res, next) {
+    console.log("About to render page");
+    console.log(req.session.currentSearchItems);
+    res.render('tags', { name: 'tags', username: req.session.userId, country: req.session.loc, songs: req.session.currentSearchItems});
 });
 
 app.post('/update', function(req, res) {
-    console.log(req.body);
     var songsAdded = req.body['songIds[]'];
+    var tag = req.body['tag'];
 
     if (typeof songsAdded == 'string'){
         songsAdded = [songsAdded];
     }
+
     console.log(songsAdded);
-    var tag = req.body['tag'];
+    console.log(tag);
 
     //mysql code
     var connection = mysql.createConnection( {
@@ -141,12 +150,6 @@ app.post('/update', function(req, res) {
                 }
             });
     }
-    /*
-    update database
-     */
-
-    console.log(songsAdded);
-    console.log(tag);
 
     res.send('done');
 });

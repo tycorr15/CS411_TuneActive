@@ -126,13 +126,20 @@ a {
  */
 
 .home-button {
+  background-color: forestgreen;
+  color: white;
+  text-decoration: none;
   border-radius: 60px;
+  border-width: 10px;
   border-style: solid;
   font-size: 50px;
   display: block;
   margin: auto;
   height: 400px;
   width: 400px;
+  border-color: forestgreen;
+  text-align: center;
+  padding-top: 80px;
 }
 
 .home-button i{
@@ -141,29 +148,9 @@ a {
 }
 
 .home-button:hover {
-  border-width: 10px;
-}
-
-.playlist-button {
-  background-color: forestgreen;
-  color: white;
-  border-color: forestgreen;
-}
-
-.playlist-button:hover {
   background-color: white;
   color: forestgreen;
-}
-
-.tags-button {
-  background-color: darkorange;
-  color: white;
-  border-color: darkorange;
-}
-
-.tags-button:hover {
-  background-color: white;
-  color: darkorange;
+  text-decoration: none;
 }
 
 .homeHeader {
@@ -171,6 +158,10 @@ a {
   font-weight: bold;
   font-style: italic;
   font-size: 70px;
+}
+
+.subHeader {
+  font-size: 50px;
 }
 
 /*
@@ -184,11 +175,25 @@ a {
 }
 
 /*
-  Playlist Page
+  Tags Page
  */
 
-.scrollable {
-  overflow: scroll;
-  height: 100%;
-  width: 100%;
+.searchIcon {
+  font-size: 30px;
+  padding-right: 15px;
+  color: forestgreen;
+  background:none!important;
+  border:none;
+  /*padding:0!important;*/
 }
+
+.searchBox {
+  border-radius: 10px;
+  border-color: forestgreen;
+  border-style: solid;
+  border-width:3px;
+  width: 600px;
+  height: 60px;
+  font-size: 30px;
+}
+

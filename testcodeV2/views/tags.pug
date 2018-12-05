@@ -1,24 +1,29 @@
 extends layout
 
 block content
-    h1.text-center Tags Page
+    h1.text-center.homeHeader.subHeader Manage Your Tags
+    hr
 
-
-
-    a(href='/search') Click here to search
+    button(onclick='search()').searchIcon
+        i.fas.fa-search
+    input#searchField(type='text' placeholder='Search for a song').searchBox
 
     br
     br
+
+    #searchResults
 
     if typeof(songs) !== 'undefined'
         h3.text-left Search results:
 
-        form(name='searchRes')
-        ul
-            each val in songs
-                input(type='checkbox' name='songTitles' value=val[2])
-                |  #{val[0]} by #{val[1]}
-                br
+        //form(name='searchRes')
+        //ul
+        //    each val in songs
+        //        input(type='checkbox' name='songTitles' value=val[2])
+        //        |  #{val[0]} by #{val[1]}
+        //        br
+
+
         br
         h4 Select your Intensity
         select#dropdown
@@ -28,27 +33,71 @@ block content
         br
         button(onclick="addSongs()") Add Songs
 
-    if typeof(ids) !== 'undefined'
-        h3.text-left Selections:
-
-        ul
-            each sId in ids
-                li=sId
-
 
     script(type='text/javascript').
-        var mydropdown = document.getElementById('dropdown');
 
+
+        var search = function () {
+            var mysearchfield = $('#searchField').val();
+            if (mysearchfield === '') {
+                alert("Did not enter anything into field");
+            } else {
+                console.log("About to search " + mysearchfield);
+                /*
+                $.post('/search', {queryVal: mysearchfield, success: function(data) {
+                    console.log(data.message);
+                    window.location.href = "/tags";
+                }});
+                */
+                $.ajax({
+                    type: "POST",
+                    url: "/search",
+                    data: {queryVal: mysearchfield},
+                    success: function (data) {
+                        console.log("I got this data:")
+                        var searchArr = data.searchResults;
+                        console.log(searchArr);
+                        var result = "<ul><h3 class='text-left'>Search Results:</h3>";
+
+                        for (var i = 0; i < searchArr.length; i++) {
+                            var songName = searchArr[i][0], artistName = searchArr[i][1], songId = searchArr[i][2];
+                            result += "<input type='checkbox' name='songTitles' value=" + songId + "> " + songName + " by " + artistName + "</br>";
+                        }
+                        result += "</ul>";
+                        result += "</br><h4>Select your Intensity</h4><select id='dropdown'>";
+                        result += "<option value='High Intensity'>High Intensity</option><option value='Medium Intensity'>Medium Intensity</option><option value='Low Intensity'>Low Intensity</option>";
+                        result += "</select></br><button onclick='addSongs()'>Add Songs</button>";
+                        console.log(result);
+
+                        //$('searchResults').append(result);
+                        document.getElementById('searchResults').innerHTML = result;
+                        console.log("Finished attaching to div")
+                        //$.get('/displayResults');
+                    },
+                    error: function (jqXHR, textStatus, err) {
+                        alert('text status ' + textStatus + ', err ' + err)
+                    }
+                });
+
+            }
+        }
         var addSongs = function () {
-            //var songsToAdd = ['Test', 'Hey'];
-            //$.post('/update', {songIds: songsToAdd, tester: 5});
-
             var songsToAdd = [];
+            var mydropdown = document.getElementById('dropdown');
+
             $("input:checkbox[name=songTitles]:checked").each(function () {
                 songsToAdd.push($(this).val());
             });
 
-            console.log(songsToAdd);
-            $.post('/update', {songIds: songsToAdd, tag: mydropdown.value, success: function () { window.location.href = "/tags"; }});
+            if (songsToAdd.length === 0) {
+                alert("Did not select any songs");
+            } else {
+                console.log(songsToAdd);
+                $.post('/update', {
+                    songIds: songsToAdd, tag: mydropdown.value, success: function () {
+                        window.location.href = "/tags";
+                    }
+                });
+            }
 
         };
