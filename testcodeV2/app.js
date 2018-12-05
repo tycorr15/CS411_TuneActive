@@ -96,6 +96,11 @@ app.get('/search', function(req, res, next) {
 app.post('/update', function(req, res) {
     console.log(req.body);
     var songsAdded = req.body['songIds[]'];
+
+    if (typeof songsAdded == 'string'){
+        songsAdded = [songsAdded];
+    }
+    console.log(songsAdded);
     var tag = req.body['tag'];
 
     //mysql code

@@ -3,10 +3,7 @@ extends layout
 block content
     h1.text-center Tags Page
 
-    select#dropdown
-        option(value='High Intensity') High Intensity
-        option(value='Medium Intensity') High Intensity
-        option(value='Low Intensity') Low Intensity
+
 
     a(href='/search') Click here to search
 
@@ -22,6 +19,12 @@ block content
                 input(type='checkbox' name='songTitles' value=val[2])
                 |  #{val[0]} by #{val[1]}
                 br
+        br
+        h4 Select your Intensity
+        select#dropdown
+            option(value='High Intensity') High Intensity
+            option(value='Medium Intensity') Medium Intensity
+            option(value='Low Intensity') Low Intensity
         br
         button(onclick="addSongs()") Add Songs
 
