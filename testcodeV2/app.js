@@ -12,6 +12,7 @@ var indexRouter = require('./routes/index');
 var homeRouter = require('./routes/home');
 var playlistRouter = require('./routes/playlist');
 var tagsRouter = require('./routes/tags');
+var weatherRouter = require('./routes/weather');
 var aboutRouter = require('./routes/about');
 var usersRouter = require('./routes/users');
 
@@ -46,6 +47,7 @@ app.use('/home', homeRouter);
 app.use('/playlist', playlistRouter);
 app.use('/tags', tagsRouter);
 app.use('/about', aboutRouter);
+app.use('/weather', weatherRouter);
 app.use('/users', usersRouter);
 
 app.post('/search', function(req, res, next) {
@@ -160,6 +162,21 @@ app.post('/update', function(req, res) {
     }
 
     res.send('done');
+});
+
+app.post('/citySearch', function(req, res, next) {
+    console.log(req.body);
+    var queryVal = req.body['queryVal'];
+    var result;
+
+    // make API call and such, store result to be send back (could be array of info)
+
+    // eventually do this
+    /*
+    console.log("Sending result back");
+    res.json({ weatherResults: result });
+    */
+
 });
 
 /* GET home page. */

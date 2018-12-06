@@ -1,0 +1,44 @@
+extends layout
+
+block content
+    h1.text-center.homeHeader.subHeader Should You Run?
+    hr
+
+    .row
+        button(onclick='search()').searchIcon
+            i.fas.fa-city
+        input#searchField(type='text' placeholder='Enter your city name').searchBox
+
+    script(type='text/javascript').
+
+        var search = function () {
+            var mysearchfield = $('#searchField').val();
+
+            if (mysearchfield === '') {
+                alert("Did not enter anything into field");
+            } else {
+                console.log("About to search " + mysearchfield);
+
+                $.ajax({
+                    type: "POST",
+                    url: "/citySearch",
+                    data: {queryVal: mysearchfield},
+                    success: function (data) {
+                        var searchArr = data.weatherResults;
+                        var result = "<h2 class='searchHeader'>Weather Results:</h2>";
+
+                        console.log(searchArr);
+
+                        result += "<p>" + searchArr + "</p>";
+
+                        document.getElementById('searchResults').innerHTML = result;
+                    } /*,
+                    error: function (jqXHR, textStatus, err) {
+                        alert('text status ' + textStatus + ', err ' + err)
+                    }*/
+                });
+            }
+        }
+
+
+
