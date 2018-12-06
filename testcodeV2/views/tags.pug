@@ -45,8 +45,8 @@ block content
                         console.log(searchArr);
 
                         for (var i = 0; i < searchArr.length; i++) {
-                            var songName = searchArr[i][0], artistName = searchArr[i][1], songId = searchArr[i][2];
-                            result += "<input type='checkbox' name='songTitles' value=" + songId + " class='songCheckBox'> <span class='artistName'>";
+                            var songName = searchArr[i][0], artistName = searchArr[i][1], songId = searchArr[i][2], songDur = searchArr[i][3];
+                            result += "<input type='checkbox' name='songTitles' value=" + songId + "," + songDur + " class='songCheckBox'> <span class='artistName'>";
                             result += artistName + " - </span><span class='songName'>" + songName + "</span></br>";
                         }
                         result += "</ul>";

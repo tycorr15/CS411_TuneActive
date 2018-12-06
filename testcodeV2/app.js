@@ -76,17 +76,17 @@ app.post('/search', function(req, res, next) {
 
     request(options, function (error, response, body) {
         if (error) throw new Error(error);
-
+        
         var itemArray = body.tracks.items;
         var result = [];
 
         for (var i = 0; i < itemArray.length; i++) {
-            result.push([itemArray[i].name, itemArray[i].artists[0].name, itemArray[i].id]);
+            result.push([itemArray[i].name, itemArray[i].artists[0].name, itemArray[i].id, itemArray[i].duration_ms]);
         }
 
         console.log('\n\n')
         result.forEach(function(element) {
-            console.log(element[1] + ' - ' + element[0] + ' with ID: ' + element[2]);
+            console.log(element[1] + ' - ' + element[0] + ' with ID: ' + element[2] + " and duration: " + element[3]);
         });
         console.log('\n\n')
 
@@ -98,13 +98,26 @@ app.post('/search', function(req, res, next) {
 app.post('/update', function(req, res) {
     var songsAdded = req.body['songIds[]'];
     var tag = req.body['tag'];
+    var ids = [];
+    var dur = [];
+    var res;
 
     if (typeof songsAdded == 'string'){
-        songsAdded = [songsAdded];
+        res = songsAdded.split(',');
+        ids = [res[0]]
+        dur = [res[1]]
+    } else {
+        songsAdded.forEach(function(element) {
+            res = element.split(',');
+            ids.push(res[0]);
+            dur.push(res[1]);
+        });
     }
 
     console.log(songsAdded);
     console.log(tag);
+    console.log(ids);
+    console.log(dur);
 
     //mysql code
     var connection = mysql.createConnection( {
