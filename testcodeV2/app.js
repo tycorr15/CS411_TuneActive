@@ -145,7 +145,8 @@ app.post('/update', function(req, res) {
         // generates a random number between min and max
         var id = Math.floor(Math.random() * (max - min)) + min;
         var song_insert = songsAdded[i];
-        connection.query("insert into mainTable values ("+id+", '"+username_insert+"', '"+song_insert+"', '"+tag+"')",
+        var dur_insert = dur[i];
+        connection.query("insert into mainTable values ("+id+", '"+username_insert+"', '"+song_insert+"', '"+tag+"', '"+dur_insert+"')",
             function(error, result, field) {
                 // callback function after query is done
                 if (!!error) {
