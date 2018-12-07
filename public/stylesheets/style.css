@@ -1,43 +1,126 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  padding-top: 100px;
+    padding: 50px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    padding-top: 100px;
 }
 
 a {
-  color: white;
+    color: white;
 }
-
 
 /*
   Navigation Bar Styles
  */
 
 .logo {
-  border-radius: 10px;
+    border-radius: 10px;
 }
 
 .navStyle {
-  font-family: "Georgia", Arial;
-  background-color: midnightblue;
-  line-height: 150px;
-  height: 95px;
-  align-content: center;
+    font-family: "Arial";
+    background-color: midnightblue;
+    line-height: 150px;
+    height: 95px;
+    align-content: center;
 }
+
 .navLink {
-  padding: 20px;
-  font-size: 20px;
+    font-size: 20px;
+    margin: 10px;
+    padding-top: 10px;
 }
 
 #navList a:hover {
-  background-color: white;
-  border-radius: 30px;
+    background-color: white;
+    border-radius: 30px;
 }
 
 .active-page {
-  background-color: white;
-  border-radius: 30px;
+    background-color: white;
+    border-radius: 30px;
+}
+
+.logstatus {
+    float: right;
+    color: #337ab7;
+    font-size: 20px;
+    margin-top: -30px;
+}
+
+#user {
+    color: white;
+    font-weight: bold;
+    font-style: italic;
+}
+
+/*
+  Login Page
+ */
+
+.log {
+    width: 400px;
+    height: 200px;
+    background-color: lightskyblue;
+    border-radius: 20px;
+    border-color: midnightblue;
+    border-width: 5px;
+    border-style: solid;
+    z-index: 15;
+    top: 50%;
+    left: 50%;
+    margin: -200px 0 0 -200px;
+    position: absolute;
+    display: inline-block;
+    text-align: center;
+}
+
+.img-back {
+    background: url(/../images/backdrop-gray.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    /*
+     background: url(/../images/backdrop.jpg);
+    background-size: 1410px 941px;
+    background-repeat: no-repeat;
+    background-position: top;
+    */
+}
+
+.index-btn {
+    color: white;
+    background-color: midnightblue;
+    border-color: midnightblue;
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 6px 12px;
+    font-size: 20px;
+    line-height: 1.42857143;
+    border-radius: 4px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.index-btn:hover {
+    color: midnightblue;
+    background-color: white;
+    border-color: midnightblue;
+    border-width: 3px;
+    text-decoration: none;
+}
+
+.index-title {
+    color: midnightblue;
 }
 
 /*
@@ -45,51 +128,42 @@ a {
  */
 
 .home-button {
-  border-radius: 60px;
-  border-style: solid;
-  font-size: 50px;
-  display: block;
-  margin: auto;
-  height: 400px;
-  width: 400px;
+    background-color: forestgreen;
+    color: white;
+    text-decoration: none;
+    border-radius: 60px;
+    border-width: 10px;
+    border-style: solid;
+    font-size: 50px;
+    display: block;
+    margin: auto;
+    height: 400px;
+    width: 400px;
+    border-color: forestgreen;
+    text-align: center;
+    padding-top: 80px;
 }
 
-.home-button i{
-  font-size: 100px;
-  padding-bottom: 50px;
+.home-button i {
+    font-size: 100px;
+    padding-bottom: 50px;
 }
 
 .home-button:hover {
-  border-width: 10px;
-}
-
-.playlist-button {
-  background-color: forestgreen;
-  color: white;
-  border-color: forestgreen;
-}
-
-.playlist-button:hover {
-  background-color: white;
-  color: forestgreen;
-}
-
-.tags-button {
-  background-color: darkorange;
-  color: white;
-  border-color: darkorange;
-}
-
-.tags-button:hover {
-  background-color: white;
-  color: darkorange;
+    background-color: white;
+    color: forestgreen;
+    text-decoration: none;
 }
 
 .homeHeader {
-  color: midnightblue;
-  font-weight: bold;
-  font-style: italic;
-  font-size: 70px;
+    color: midnightblue;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 70px;
+}
+
+.subHeader {
+    font-size: 50px;
 }
 
 /*
@@ -97,7 +171,220 @@ a {
  */
 
 .tuneActiveAbout {
-  color: midnightblue;
-  font-weight: bold;
-  font-style: italic;
+    color: midnightblue;
+    font-weight: bold;
+    font-style: italic;
 }
+
+.profile {
+    text-align: center;
+}
+
+.aboutName {
+    color: forestgreen;
+    font-weight: bold;
+}
+
+.aboutTitle {
+    color: midnightblue;
+    font-style: italic;
+    margin-top: -5px;
+
+}
+
+.aboutText {
+    color: forestgreen;
+    font-size: 20px;
+    text-align: center;
+}
+
+.aboutImg {
+    margin: auto;
+    border-radius: 10px;
+}
+
+.rebecca {
+    width: 287px;
+    height: 332px;
+}
+
+.ali {
+    width: 300px;
+    height: 300px;
+}
+
+.tyler {
+    width: 250px;
+    height: 444px;
+}
+
+/*
+  Tags Page
+ */
+
+.limitInput {
+    display: flex;
+    justify-content: center;
+}
+
+.searchIcon {
+    font-size: 30px;
+    padding-right: 15px;
+    color: forestgreen;
+    background: none !important;
+    border: none;
+}
+
+.searchBox {
+    border-radius: 10px;
+    border-color: forestgreen;
+    border-style: solid;
+    border-width: 3px;
+    width: 600px;
+    height: 60px;
+    font-size: 30px;
+}
+
+.limitBox {
+    border-radius: 10px;
+    border-color: forestgreen;
+    border-style: solid;
+    border-width: 3px;
+    width: 160px;
+    height: 60px;
+    font-size: 30px;
+    float: right;
+}
+
+.numResultsHeader {
+    color: forestgreen;
+    margin: 14px;
+}
+
+.artistName {
+    color: forestgreen;
+    font-size: 23px;
+    font-weight: bold;
+}
+
+.songName {
+    color: midnightblue;
+    font-size: 23px;
+    font-style: italic;
+}
+
+.songCheckBox {
+    height: 40px;
+    width: 40px;
+}
+
+input[type=checkbox], input[type=radio] {
+    margin: 4px 0 0;
+    margin-top: 1px\9;
+    line-height: normal;
+    position: relative;
+    vertical-align: middle;
+    bottom: 33px;
+    right: 20px;
+}
+
+.searchHeader {
+    color: midnightblue;
+    font-weight: bold;
+}
+
+.btnSection {
+    text-align: center;
+}
+
+.addSongBtn {
+    border-color: forestgreen;
+    border-style: solid;
+    border-width: 5px;
+    border-radius: 10px;
+    height: 100px;
+    width: 300px;
+    background-color: forestgreen;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.addSongBtn:hover {
+    background-color: white;
+    color: forestgreen;
+}
+
+/*
+    Playlist Page
+ */
+
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 15px;
+    border-radius: 5px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: forestgreen;/*#4CAF50;*/
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: forestgreen;/*#4CAF50;*/
+    cursor: pointer;
+}
+
+.minutes {
+    display: inline-block;
+    padding-left: 20px;
+    font-size: 25px;
+    color: midnightblue;
+}
+
+.val {
+    color: forestgreen;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+.btnSliderSection {
+    float: right;
+}
+
+.addSliderBtn {
+    border-color: forestgreen;
+    border-style: solid;
+    border-width: 2.5px;
+    border-radius: 10px;
+    height: 50px;
+    width: 175px;
+    background-color: forestgreen;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.addSliderBtn:hover {
+    background-color: white;
+    color: forestgreen;
+}
+
+.dropDownAdj {
+    margin-bottom: 15px;
+}
+

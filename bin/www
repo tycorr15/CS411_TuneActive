@@ -1,11 +1,11 @@
 #!/usr/bin/env node
-require('dotenv').config();
 /**
  * Module dependencies.
  */
 
+require('dotenv').config();
 var app = require('../app');
-var debug = require('debug')('tuneactivev2:server');
+var debug = require('debug')('tuneactivev3:server');
 var http = require('http');
 
 /**
