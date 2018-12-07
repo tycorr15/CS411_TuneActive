@@ -144,13 +144,13 @@ app.post('/update', function(req, res) {
     });
 
     var username_insert = req.session.userId;
-    for (var i=0; i<songsAdded.length; i++)
+    for (var i=0; i < ids.length; i++)
     {
         var min = 1;
         var max = 100000000;
         // generates a random number between min and max
         var id = Math.floor(Math.random() * (max - min)) + min;
-        var song_insert = songsAdded[i];
+        var song_insert = ids[i];
         var dur_insert = dur[i];
         connection.query("insert into mainTable values ("+id+", '"+username_insert+"', '"+song_insert+"', '"+tag+"', '"+dur_insert+"')",
             function(error, result, field) {

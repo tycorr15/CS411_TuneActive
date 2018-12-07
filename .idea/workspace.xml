@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="67747d8a-58cc-46b2-9631-689bbfef690a" name="Default Changelist" comment="" />
+    <list default="true" id="67747d8a-58cc-46b2-9631-689bbfef690a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -30,7 +32,7 @@
           <entry key="gitignore" value="1" />
           <entry key="html" value="28" />
           <entry key="jpg" value="1" />
-          <entry key="js" value="45" />
+          <entry key="js" value="46" />
           <entry key="json" value="8" />
           <entry key="pug" value="23" />
           <entry key="www" value="9" />
@@ -44,7 +46,7 @@
           <entry key="Image" value="1" />
           <entry key="JSON" value="8" />
           <entry key="Jade" value="23" />
-          <entry key="JavaScript" value="54" />
+          <entry key="JavaScript" value="55" />
           <entry key="PLAIN_TEXT" value="2" />
         </counts>
       </usages-collector>
@@ -54,7 +56,7 @@
           <entry key="env" value="102" />
           <entry key="gitignore" value="17" />
           <entry key="html" value="3041" />
-          <entry key="js" value="7006" />
+          <entry key="js" value="7014" />
           <entry key="json" value="2" />
           <entry key="pug" value="8350" />
           <entry key="www" value="105" />
@@ -67,7 +69,7 @@
           <entry key="HTML" value="3041" />
           <entry key="JSON" value="2" />
           <entry key="Jade" value="8350" />
-          <entry key="JavaScript" value="7111" />
+          <entry key="JavaScript" value="7119" />
           <entry key="PLAIN_TEXT" value="30" />
         </counts>
       </usages-collector>
@@ -75,11 +77,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/authorization_code/public/index.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="476">
               <caret line="113" column="40" selection-start-line="113" selection-start-column="40" selection-end-line="113" selection-end-column="40" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="425">
+              <caret line="151" column="36" selection-start-line="151" selection-start-column="36" selection-end-line="151" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -123,7 +134,6 @@
         <option value="$PROJECT_DIR$/bin/www" />
         <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/routes/tags.js" />
-        <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/public/nav.html" />
         <option value="$PROJECT_DIR$/public/playlist.html" />
         <option value="$PROJECT_DIR$/public/tags.html" />
@@ -164,6 +174,7 @@
         <option value="$PROJECT_DIR$/testcodeV2/routes/generate.js" />
         <option value="$PROJECT_DIR$/testcodeV2/routes/search.js" />
         <option value="$PROJECT_DIR$/testcodeV2/app.js" />
+        <option value="$PROJECT_DIR$/app.js" />
       </list>
     </option>
   </component>
@@ -262,15 +273,15 @@
       <workItem from="1541968336836" duration="1686000" />
       <workItem from="1541970049856" duration="10887000" />
       <workItem from="1542222041450" duration="13087000" />
-      <workItem from="1544111395624" duration="20409000" />
+      <workItem from="1544111395624" duration="20815000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="143598000" />
+    <option name="totallyTimeSpent" value="144004000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1332982" />
@@ -422,13 +433,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
           <caret line="22" column="8" selection-start-line="22" selection-start-column="8" selection-end-line="22" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" selection-start-line="22" selection-end-line="22" />
         </state>
       </provider>
     </entry>
@@ -612,6 +616,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="476">
           <caret line="113" column="40" selection-start-line="113" selection-start-column="40" selection-end-line="113" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="151" column="36" selection-start-line="151" selection-start-column="36" selection-end-line="151" selection-end-column="36" />
         </state>
       </provider>
     </entry>
