@@ -14,6 +14,7 @@ var playlistRouter = require('./routes/playlist');
 var tagsRouter = require('./routes/tags');
 var weatherRouter = require('./routes/weather');
 var aboutRouter = require('./routes/about');
+var genRouter = require('./routes/generate');
 var usersRouter = require('./routes/users');
 
 var app = express();
@@ -48,6 +49,7 @@ app.use('/playlist', playlistRouter);
 app.use('/tags', tagsRouter);
 app.use('/about', aboutRouter);
 app.use('/weather', weatherRouter);
+app.use('/generate', genRouter);
 app.use('/users', usersRouter);
 
 app.post('/search', function(req, res, next) {
@@ -97,7 +99,9 @@ app.post('/search', function(req, res, next) {
     });
 });
 
+
 app.post('/update', function(req, res) {
+    console.log(req.body);
     var songsAdded = req.body['songIds[]'];
     var tag = req.body['tag'];
     var ids = [];
