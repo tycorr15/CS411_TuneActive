@@ -176,6 +176,28 @@ a {
     font-style: italic;
 }
 
+.profile {
+    text-align: center;
+}
+
+.aboutName {
+    color: forestgreen;
+    font-weight: bold;
+}
+
+.aboutTitle {
+    color: midnightblue;
+    font-style: italic;
+    margin-top: -5px;
+}
+
+.aboutImg {
+    margin: auto;
+    width: 300px;
+    height: 400px;
+    border-radius: 10px;
+}
+
 /*
   Tags Page
  */
