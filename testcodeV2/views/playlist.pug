@@ -1,8 +1,78 @@
 extends layout
 
 block content
-    h1.text-center.homeHeader.subHeader Playlist Page
+    h1.text-center.homeHeader.subHeader Generate a Playlist
     hr
 
+    #slider
+        .btnSliderSection
+            button.addSliderBtn(onclick='addSlider()')
+                i.fas.fa-plus
+                |  Add Exercise
+        br
+        br
+
+        select#dropdown1
+            option(value='High Intensity') High Intensity
+            option(value='Medium Intensity') Medium Intensity
+            option(value='Low Intensity') Low Intensity
+        p.minutes
+            | Minutes:
+            span#numMins1.val
+
+        input#myRange1.slider(type='range' min='1' max='30' value='15')
+
+    #results
+
+    br
+    br
+    .btnSection
+        button.addSongBtn(onclick='generate()')
+            i.fas.fa-bolt
+            |  Generate
 
 
+    script.
+        var count = 1;
+        var slider = document.getElementById("myRange1");
+        var output = document.getElementById("numMins1");
+        output.innerHTML = slider.value; // Display the default slider value
+        // Update the current slider value (each time you drag the slider handle)
+        slider.oninput = function () {
+            output.innerHTML = this.value;
+        }
+
+        var addSlider = function() {
+            count += 1;
+            var newSlider = "</br></br><select id='dropdown" + count + "' class='dropDownAdj'>";
+            newSlider += "<option value='High Intensity'>High Intensity</option><option value='Medium Intensity'>Medium Intensity</option><option value='Low Intensity'>Low Intensity</option>";
+            newSlider += "</select><p class='minutes'>Minutes: <span id='numMins" + count + "' class='val'></span></p>";
+            newSlider += "<input id='myRange" + count + "' class='slider' type='range' min='1' max='30' value='15'>";
+
+            $('#slider').append(newSlider);
+
+            var newSlider = document.getElementById("myRange" + count);
+            var newOutput = document.getElementById("numMins" + count);
+            newOutput.innerHTML = newSlider.value;
+
+            newSlider.oninput = function () {
+                newOutput.innerHTML = this.value;
+            }
+
+        }
+
+        var generate = function() {
+            $('#slider').hide();
+            var result = [];
+
+            for(var i = 1; i < count + 1; i++) {
+                console.log(document.getElementById('dropdown' + i));
+                var tagVal = document.getElementById('dropdown' + i).value;
+                var minuteVal = document.getElementById('numMins' + i).innerHTML;
+
+                result.push([tagVal, minuteVal]);
+            }
+
+            console.log(result);
+
+        }

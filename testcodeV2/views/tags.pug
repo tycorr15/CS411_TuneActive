@@ -46,8 +46,11 @@ block content
 
                         for (var i = 0; i < searchArr.length; i++) {
                             var songName = searchArr[i][0], artistName = searchArr[i][1], songId = searchArr[i][2], songDur = searchArr[i][3];
-                            result += "<input type='checkbox' name='songTitles' value=" + songId + "," + songDur + " class='songCheckBox'> <span class='artistName'>";
-                            result += artistName + " - </span><span class='songName'>" + songName + "</span></br>";
+                            result += "<label>";
+                            result += "<input type='checkbox' name='songTitles' value=" + songId + "," + songDur + " class='songCheckBox'>   ";
+                            result += "<iframe src='https://open.spotify.com/embed/track/" + songId + " width='300' height='80' frameborder='0' allowtransparency='true' allow='encrypted-media'></iframe>";
+                            result += "</label></br>"
+                            //result += "<span class='artistName'>" + artistName + " - </span><span class='songName'>" + songName + "</span></br>";
                         }
                         result += "</ul>";
                         result += "<hr><h2 class='searchHeader'>Select your Intensity</h2><select id='dropdown'>";
