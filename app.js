@@ -85,12 +85,12 @@ app.post('/search', function(req, res, next) {
         var result = [];
 
         for (var i = 0; i < itemArray.length; i++) {
-            result.push([itemArray[i].name, itemArray[i].artists[0].name, itemArray[i].id, itemArray[i].duration_ms]);
+            result.push([itemArray[i].name, itemArray[i].artists[0].name, itemArray[i].id, itemArray[i].duration_ms, itemArray[i].uri]);
         }
 
         console.log('\n\n')
         result.forEach(function(element) {
-            console.log(element[1] + ' - ' + element[0] + ' with ID: ' + element[2] + " and duration: " + element[3]);
+            console.log(element[1] + ' - ' + element[0] + ' with uri: ' + element[4] + " and duration: " + element[3]);
         });
         console.log('\n\n')
 
@@ -217,7 +217,7 @@ app.get('/login', function (req, res) {
     res.cookie(stateKey, state);
 
     // your application requests authorization
-    var scope = 'user-read-private user-read-email';
+    var scope = 'user-read-private user-read-email playlist-modify-public playlist-modify-private playlist-read-private';
     res.redirect('https://accounts.spotify.com/authorize?' +
         querystring.stringify({
             response_type: 'code',
