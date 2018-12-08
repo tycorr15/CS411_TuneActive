@@ -171,7 +171,43 @@ app.post('/update', function(req, res) {
 app.post('/citySearch', function(req, res, next) {
     console.log(req.body);
     var queryVal = req.body['queryVal'];
-    var result;
+    var result = [];
+
+    var request = require("request");
+
+    var options = { method: 'GET',
+        url: 'https://5dayweather.org/api.php',
+        qs: { city: queryVal },
+        headers:
+            { 'Postman-Token': 'a9a38b51-b625-4ffe-a2cf-1995818dc888',
+                'cache-control': 'no-cache' } ,
+        json: true
+    };
+
+    request(options, function (error, response, body) {
+        if (error) throw new Error(error);
+
+        //console.log(body.data[temperature])
+        //console.log(req.body);
+        //console.log(body.data); //undefined
+        //console.log(body[data]); //returns error
+        //console.log(body.temperature); //undefined
+        //console.log(body[8]) //goes into "s" in version
+        //console.log(body.data.temperature),
+        //console.log(body.data.location)
+        var temperature = body.data.temperature;
+        var skytext = body.data.skytext;
+        var humidity = body.data.humidity;
+        var wind = body.data.wind;
+        result.push(temperature, skytext, humidity, wind);
+        //console.log("Result array is:", result); //result[0]returns temperature
+
+        console.log("Sending result back")
+        res.json({weatherResults: result});
+
+        //running conditions
+
+    });
 
     // make API call and such, store result to be send back (could be array of info)
 

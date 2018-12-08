@@ -9,6 +9,10 @@ block content
             i.fas.fa-city
         input#searchField(type='text' placeholder='Enter your city name').searchBox
 
+    hr
+
+    #weatherResults
+
     script(type='text/javascript').
 
         var search = function () {
@@ -27,14 +31,28 @@ block content
                         var searchArr = data.weatherResults;
                         var result = "<h2 class='searchHeader'>Weather Results:</h2>";
 
-                        console.log(searchArr);
+                        console.log("searchArr is:",searchArr);
 
-                        result += "<p>" + searchArr + "</p>";
+                        var temperature = searchArr[0], skytext = searchArr[1], humidity= searchArr[2], wind = searchArr[3];
 
-                        document.getElementById('searchResults').innerHTML = result;
+                        result += "<p>Current Temperature is:</p>";
+                        result += temperature;
+                        result += "<p>The sky is: </p>";
+                        result += skytext;
+                        result += "<p>Humidity is:</p>";
+                        result += humidity;
+                        result += "<p>Wind Speed is:</p>";
+                        result += wind;
+
+                        console.log(result);
+
+                        document.getElementById('weatherResults').innerHTML = result;
+
                     } /*,
+
                     error: function (jqXHR, textStatus, err) {
                         alert('text status ' + textStatus + ', err ' + err)
+
                     }*/
                 });
             }
