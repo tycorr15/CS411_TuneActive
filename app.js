@@ -187,14 +187,6 @@ app.post('/citySearch', function(req, res, next) {
     request(options, function (error, response, body) {
         if (error) throw new Error(error);
 
-        //console.log(body.data[temperature])
-        //console.log(req.body);
-        //console.log(body.data); //undefined
-        //console.log(body[data]); //returns error
-        //console.log(body.temperature); //undefined
-        //console.log(body[8]) //goes into "s" in version
-        //console.log(body.data.temperature),
-        //console.log(body.data.location)
         var temperature = body.data.temperature;
         var skytext = body.data.skytext;
         var humidity = body.data.humidity;
