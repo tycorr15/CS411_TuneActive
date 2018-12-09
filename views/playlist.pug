@@ -83,7 +83,12 @@ block content
                 success: function (data) {
                     var playlistID = data.playlistID;
                     console.log(playlistID);
-                    var result = "<iframe src='https://open.spotify.com/embed/playlist/" + playlistID + " width='300' height='80' frameborder='0' allowtransparency='true' allow='encrypted-media'></iframe>";
+                    var result = '';
+
+                    result += "</br><h2 class='playlistResHeader'>Generated Playlist:</h2></br>";
+                    result += "<div class='resPlaylist'>";
+                    result += "<iframe src='https://open.spotify.com/embed/playlist/" + playlistID + " width='300' height='80' frameborder='0' allowtransparency='true' allow='encrypted-media'></iframe>";
+                    result += "</div>";
 
                     console.log(result);
 
