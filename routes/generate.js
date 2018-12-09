@@ -16,7 +16,6 @@ router.post('/', function(req, res, next) {
 
     console.log(input_playlist);
 
-    var final_playlist = [];
     /*
     //mysql code
     var connection = mysql.createConnection( {
@@ -106,17 +105,18 @@ router.post('/', function(req, res, next) {
                         {
                             // add songs until reach input_low_duration
                             var cur_dur = 0;
-                            while (cur_dur < input_duration)
+                            for (var i=0; i<all_songs.length; i++)
                             {
-                                for (var i=0; i<all_songs.length; i++) {
+                                if (cur_dur < input_duration)
+                                {
                                     final_playlist.push(all_songs[i]);
                                     cur_dur = cur_dur + all_dur[i];
                                 }
                             }
                         }
-                        console.log(final_playlist);
 
                     }
+                    console.log(final_playlist);
                 })
 
         }
@@ -180,9 +180,10 @@ router.post('/', function(req, res, next) {
                         {
                             // add songs until reach input_low_duration
                             var cur_dur = 0;
-                            while (cur_dur < input_duration)
+                            for (var i=0; i<all_songs.length; i++)
                             {
-                                for (var i=0; i<all_songs.length; i++) {
+                                if (cur_dur < input_duration)
+                                {
                                     final_playlist.push(all_songs[i]);
                                     cur_dur = cur_dur + all_dur[i];
                                 }
@@ -254,9 +255,9 @@ router.post('/', function(req, res, next) {
                         {
                             // add songs until reach input_low_duration
                             var cur_dur = 0;
-                            while (cur_dur < input_duration)
+                            for (var i=0; i<all_songs.length; i++)
                             {
-                                for (var i=0; i<all_songs.length; i++) {
+                                if (cur_dur < input_duration) {
                                     final_playlist.push(all_songs[i]);
                                     cur_dur = cur_dur + all_dur[i];
                                 }
@@ -272,7 +273,7 @@ router.post('/', function(req, res, next) {
     */
 
     // artificial final_playlist for testing
-    final_playlist = ['spotify:track:2nMeu6UenVvwUktBCpLMK9', 'spotify:track:0mt02gJ425Xjm7c3jYkOBn', 'spotify:track:487OPlneJNni3NWC8SYqhW'];
+    var final_playlist = ['spotify:track:2nMeu6UenVvwUktBCpLMK9', 'spotify:track:0mt02gJ425Xjm7c3jYkOBn', 'spotify:track:487OPlneJNni3NWC8SYqhW'];
 
     console.log('Starting calls');
 
