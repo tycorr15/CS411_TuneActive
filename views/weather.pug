@@ -33,7 +33,7 @@ block content
 
                         console.log("searchArr is:",searchArr);
 
-                        var temperature = searchArr[0], skytext = searchArr[1], humidity= searchArr[2], wind = searchArr[3];
+                        var temperature = searchArr[0], skytext = searchArr[1], humidity= searchArr[2], wind = searchArr[3], suggestion = searchArr[4];
 
                         result += "<p>Current Temperature is:</p>";
                         result += temperature;
@@ -43,6 +43,8 @@ block content
                         result += humidity;
                         result += "<p>Wind Speed is:</p>";
                         result += wind;
+                        result += "<p>Our Suggestion:</p>";
+                        result += suggestion;
 
                         console.log(result);
 

@@ -191,8 +191,27 @@ app.post('/citySearch', function(req, res, next) {
         var skytext = body.data.skytext;
         var humidity = body.data.humidity;
         var wind = body.data.wind;
-        result.push(temperature, skytext, humidity, wind);
+
+        if(temperature <= 30 && wind > 3) {
+            var suggestion = "Don't Run, it's too cold and windy";
+        }
+        else if(skytext.match("Rain")) { //finds all the strings that contain "rain"
+            var suggestion = "Be careful, it's raining outside";
+        }
+        else if(skytext.match("Snow")) { //finds all the strings that contain "rain"
+            var suggestion = "Be careful, it's snowing outside";
+        }
+        else if (temperature >= 90 && humidity >= 60) {
+            var suggestion = "Don't run, it's too hot and humid outside";
+        }
+
+        else {
+            var suggestion = "There is no time like now! Go out there and workout :)";
+        }
+
+        result.push(temperature, skytext, humidity, wind, suggestion);
         //console.log("Result array is:", result); //result[0]returns temperature
+
 
         console.log("Sending result back")
         res.json({weatherResults: result});
