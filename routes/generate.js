@@ -5,7 +5,6 @@ var request = require('request');
 
 /* Generate button functionality. */
 router.post('/', function(req, res, next) {
-    console.log(req.body);
 
     var input_playlist = [];
     var selectCount = Object.keys(req.body).length;
@@ -272,33 +271,20 @@ router.post('/', function(req, res, next) {
     }
     */
 
-    /*
-        Steps:
-        -Call API to get user's playlist, get one called "TuneActive Playlist" and grab its ID, if not there, create it and go right to adding
-        -Call API to get that playlist and tracks, and store all track ids in an array
-        -Call API to remove those tracks from that playlist
-        -Call API to add new tracks
-        -res.json back the playlist id to be placed in the embedded thing
-     */
-
     // artificial final_playlist for testing
     final_playlist = ['spotify:track:2nMeu6UenVvwUktBCpLMK9', 'spotify:track:0mt02gJ425Xjm7c3jYkOBn', 'spotify:track:487OPlneJNni3NWC8SYqhW'];
 
     console.log('Starting calls');
 
-    var final_playlist_JSON_form = {'uris' : []};
+    var final_playlist_JSON_form = {'uris' : final_playlist};
     var final_playlist_query_form = 'uris=';
-    console.log(final_playlist_JSON_form);
 
     for (var i = 0; i < final_playlist.length; i++) {
-        final_playlist_JSON_form['uris'] += final_playlist[i] + ',';
         final_playlist_query_form += final_playlist[i] + ',';
     }
 
     // get rid of trailing comma
     final_playlist_query_form = final_playlist_query_form.slice(0, -1);
-    final_playlist_JSON_form['uris'] = final_playlist_JSON_form['uris'].slice(0,-1);
-    console.log(final_playlist_query_form);
 
     console.log('Playlist in JSON form done');
     console.log(final_playlist_JSON_form);
@@ -333,91 +319,26 @@ router.post('/', function(req, res, next) {
             var targetID = playlistArray[targetIndex].id;
             console.log('Playlist already exists with ID: ' + targetID);
 
-            // remove all songs first
-
-            var getPlayOptions = { method: 'GET',
-                url: 'https://api.spotify.com/v1/playlists/' + targetID,
+            var replaceOptions = { method: 'PUT',
+                url: 'https://api.spotify.com/v1/playlists/' + targetID + '/tracks',
+                //qs: final_playlist_JSON_form,
                 headers:
-                    { 'Postman-Token': 'f7db762e-133d-4273-88fb-e9d71fb5bb9b',
+                    { 'Postman-Token': '5ccf2a8f-d6c9-487d-b0de-96aeef897a73',
                         'cache-control': 'no-cache',
-                        Authorization: 'Bearer ' + req.session.access_token } };
+                        'Content-Type': 'application/json',
+                        Authorization: 'Bearer ' + req.session.access_token},
+                body: final_playlist_JSON_form,
+                json: true};
 
-            request(getPlayOptions, function (error, response, body) {
+            request(replaceOptions, function (error, response, body) {
                 if (error) throw new Error(error);
+                console.log('Successfully replaced songs in playlist');
 
-                // first get all the current songs in TuneActive Playlist
-                var listOfSongs = body.tracks.items;
-                var songsToRemove = [];
-
-                for (var i = 0; i < listOfSongs.length; i++) {
-                    var idOfSong = listOfSongs[i].track.uri;
-                    songsToRemove.push(idOfSong);
-                }
-
-                if (songsToRemove.length === 0) {
-                    // add all tracks from final_playlist
-
-                    var addOptions = { method: 'POST',
-                        url: 'https://api.spotify.com/v1/playlists/' + targetID + '/tracks',
-                        headers:
-                            { 'Postman-Token': '5ccf2a8f-d6c9-487d-b0de-96aeef897a73',
-                                'cache-control': 'no-cache',
-                                'Content-Type': 'application/json',
-                                Authorization: 'Bearer ' + req.session.access_token,},
-                        body: final_playlist_JSON_form,
-                        json: true };
-
-                    request(addOptions, function (error, response, body) {
-                        if (error) throw new Error(error);
-
-                        // everything added, send back the playlist ID to be shown in an embedded spotify element
-                        res.json({playlistID: targetID});
-
-                    });
-                } else {
-                    // remove, then add
-
-                    // build remove object
-                    var toRemove = {tracks : []}
-
-                    for (var i = 0; i < songsToRemove.length; i++) {
-                        toRemove['tracks'].append({'uri': songsToRemove[i]});
-                    }
-
-                    // delete all tracks in TuneActive Playlist
-                    var removeOptions = { method: 'DELETE',
-                        url: 'https://api.spotify.com/v1/playlists/' + targetID + '/tracks',
-                        qs: toRemove,
-                        headers:
-                            { 'Postman-Token': 'c8b099ec-5f18-4a0e-a78c-8d29f268cc90',
-                                'cache-control': 'no-cache',
-                                Authorization: 'Bearer ' + req.session.access_token } };
-
-                    request(removeOptions, function (error, response, body) {
-                        if (error) throw new Error(error);
-
-                        var addOptions = { method: 'POST',
-                            url: 'https://api.spotify.com/v1/playlists/' + targetID + '/tracks',
-                            headers:
-                                { 'Postman-Token': '5ccf2a8f-d6c9-487d-b0de-96aeef897a73',
-                                    'cache-control': 'no-cache',
-                                    'Content-Type': 'application/json',
-                                    Authorization: 'Bearer ' + req.session.access_token,},
-                            body: final_playlist_JSON_form,
-                            json: true };
-
-                        request(addOptions, function (error, response, body) {
-                            if (error) throw new Error(error);
-
-                            // everything added, send back the playlist ID to be shown in an embedded spotify element
-                            res.json({playlistID: targetID});
-
-                        });
-                    });
-
-                }
+                // everything added, send back the playlist ID to be shown in an embedded spotify element
+                res.json({playlistID: targetID});
 
             });
+
         } else {
             // playlist doesn't exist yet, create it
             console.log("Playlist doesn't exist.");
@@ -430,27 +351,27 @@ router.post('/', function(req, res, next) {
                 }),
                 dataType: 'json',
                 headers: {
-                    'Authorization': 'Bearer ' + req.session.access_token
-                },
-                "content-Type": 'application/json'
+                    'Content-Type': 'application/json',
+                    Authorization: 'Bearer ' + req.session.access_token
+                }
             };
+
 
             request(newPlayOptions, function (error,response,body) {
                 console.log('Successfully created new playlist');
                 var newBody = JSON.parse(body);
                 var playlistID = newBody.id;
-                console.log('PlaylistID is: ' + playlistID);
-                console.log('Type of query:' + (typeof final_playlist_query_form));
+
                 var addOptions = { method: 'POST',
                     url: 'https://api.spotify.com/v1/playlists/' + playlistID + '/tracks',
-                    qs: final_playlist_JSON_form,
+                    //qs: final_playlist_JSON_form,
                     headers:
                         { 'Postman-Token': '5ccf2a8f-d6c9-487d-b0de-96aeef897a73',
                             'cache-control': 'no-cache',
                             'Content-Type': 'application/json',
-                            Authorization: 'Bearer ' + req.session.access_token,}
-                    //body: final_playlist_JSON_form,
-                    /*json: true*/ };
+                            Authorization: 'Bearer ' + req.session.access_token},
+                    body: final_playlist_JSON_form,
+                    json: true};
 
                 request(addOptions, function (error, response, body) {
                     if (error) throw new Error(error);

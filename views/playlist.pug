@@ -26,7 +26,7 @@ block content
 
     br
     br
-    .btnSection
+    #btnGen.btnSection
         button.addSongBtn(onclick='generate()')
             i.fas.fa-bolt
             |  Generate
@@ -63,6 +63,7 @@ block content
 
         var generate = function() {
             $('#slider').hide();
+            $('#btnGen').hide();
             var result = [];
 
             for(var i = 1; i < count + 1; i++) {
@@ -80,29 +81,14 @@ block content
                 url: "/generate",
                 data: {sliderVals: result},
                 success: function (data) {
-                    /*
-                    var searchArr = data.searchResults;
-                    var result = "<h2 class='searchHeader'>Search Results:</h2><hr><ul>";
+                    var playlistID = data.playlistID;
+                    console.log(playlistID);
+                    var result = "<iframe src='https://open.spotify.com/embed/playlist/" + playlistID + " width='300' height='80' frameborder='0' allowtransparency='true' allow='encrypted-media'></iframe>";
 
-                    console.log(searchArr);
-
-                    for (var i = 0; i < searchArr.length; i++) {
-                        var songName = searchArr[i][0], artistName = searchArr[i][1], songId = searchArr[i][2], songDur = searchArr[i][3];
-                            result += "<label>";
-                            result += "<input type='checkbox' name='songTitles' value=" + songId + "," + songDur + " class='songCheckBox'>   ";
-                            result += "<iframe src='https://open.spotify.com/embed/track/" + songId + " width='300' height='80' frameborder='0' allowtransparency='true' allow='encrypted-media'></iframe>";
-                            result += "</label></br>"
-                            //result += "<span class='artistName'>" + artistName + " - </span><span class='songName'>" + songName + "</span></br>";
-                    }
-                    result += "</ul>";
-                    result += "<hr><h2 class='searchHeader'>Select your Intensity</h2><select id='dropdown'>";
-                    result += "<option value='High Intensity'>High Intensity</option><option value='Medium Intensity'>Medium Intensity</option><option value='Low Intensity'>Low Intensity</option>";
-                    result += "</select></br></br><div class='btnSection'><button onclick='addSongs()' class='addSongBtn'><i class=\"fas fa-plus\"></i> Add Songs</button></div>";
                     console.log(result);
 
-                    document.getElementById('searchResults').innerHTML = result;
-                    */
-                    console.log(data.playlistID);
+                    document.getElementById('results').innerHTML = result;
+
                 } /*,
                     error: function (jqXHR, textStatus, err) {
                     alert('text status ' + textStatus + ', err ' + err)
