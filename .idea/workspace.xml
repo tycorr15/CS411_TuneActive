@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="67747d8a-58cc-46b2-9631-689bbfef690a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/create_playlist_DB.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/generate.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/generate.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/generate_rebecca.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/generate_rebecca.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/playlist.pug" beforeDir="false" afterPath="$PROJECT_DIR$/views/playlist.pug" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -60,7 +58,7 @@
           <entry key="html" value="3041" />
           <entry key="js" value="9381" />
           <entry key="json" value="2" />
-          <entry key="pug" value="8513" />
+          <entry key="pug" value="8533" />
           <entry key="www" value="105" />
         </counts>
       </usages-collector>
@@ -70,7 +68,7 @@
           <entry key="CSS" value="5437" />
           <entry key="HTML" value="3041" />
           <entry key="JSON" value="2" />
-          <entry key="Jade" value="8513" />
+          <entry key="Jade" value="8533" />
           <entry key="JavaScript" value="9486" />
           <entry key="PLAIN_TEXT" value="30" />
         </counts>
@@ -110,7 +108,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="347">
@@ -133,11 +131,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/playlist.pug">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="555">
-              <caret line="87" column="94" selection-start-line="87" selection-start-column="94" selection-end-line="87" selection-end-column="94" />
+            <state relative-caret-position="589">
+              <caret line="89" column="126" selection-start-line="89" selection-start-column="126" selection-end-line="89" selection-end-column="126" />
             </state>
           </provider>
         </entry>
@@ -265,9 +263,9 @@
         <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/views/about.pug" />
         <option value="$PROJECT_DIR$/public/stylesheets/style.css" />
-        <option value="$PROJECT_DIR$/views/playlist.pug" />
         <option value="$PROJECT_DIR$/routes/generate_rebecca.js" />
         <option value="$PROJECT_DIR$/routes/generate.js" />
+        <option value="$PROJECT_DIR$/views/playlist.pug" />
       </list>
     </option>
   </component>
@@ -292,7 +290,7 @@
   <component name="PackageJsonUpdateNotifier">
     <dismissed value="$PROJECT_DIR$/authorization_code/package.json" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="25" />
     <option name="y" value="13" />
     <option name="width" value="864" />
@@ -394,7 +392,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="162368000" />
+    <option name="totallyTimeSpent" value="162784000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -528,13 +526,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/playlist.pug">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="87" column="94" selection-start-line="87" selection-start-column="94" selection-end-line="87" selection-end-column="94" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/routes/generate_rebecca.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="736">
@@ -559,6 +550,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="347">
           <caret line="182" column="46" selection-start-line="182" selection-start-column="46" selection-end-line="182" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/playlist.pug">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="589">
+          <caret line="89" column="126" selection-start-line="89" selection-start-column="126" selection-end-line="89" selection-end-column="126" />
         </state>
       </provider>
     </entry>
