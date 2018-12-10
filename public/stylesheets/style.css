@@ -398,3 +398,33 @@ input[type=checkbox], input[type=radio] {
     text-align: center;
 }
 
+/*
+    Weather Page
+ */
+
+.weatherLabel {
+    color: forestgreen;
+    font-size: 20px;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.weatherValue {
+    color: midnightblue;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.suggestion {
+    color: midnightblue;
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.suggestionContent {
+    color: forestgreen;
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+}
