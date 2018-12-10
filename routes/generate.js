@@ -16,7 +16,6 @@ router.post('/', function(req, res, next) {
 
     console.log(input_playlist);
 
-    /*
     //mysql code
     var connection = mysql.createConnection( {
         host: 'localhost',
@@ -263,6 +262,9 @@ router.post('/', function(req, res, next) {
                                 }
                             }
                         }
+
+
+
                         console.log(final_playlist);
 
                     }
@@ -270,10 +272,9 @@ router.post('/', function(req, res, next) {
 
         }
     }
-    */
 
     // artificial final_playlist for testing
-    var final_playlist = ['spotify:track:2nMeu6UenVvwUktBCpLMK9', 'spotify:track:0mt02gJ425Xjm7c3jYkOBn', 'spotify:track:487OPlneJNni3NWC8SYqhW'];
+    //var final_playlist = ['spotify:track:2nMeu6UenVvwUktBCpLMK9', 'spotify:track:0mt02gJ425Xjm7c3jYkOBn', 'spotify:track:487OPlneJNni3NWC8SYqhW'];
 
     console.log('Starting calls');
 
@@ -380,7 +381,7 @@ router.post('/', function(req, res, next) {
                     console.log(body);
 
                     // everything added, send back the playlist ID to be shown in an embedded spotify element
-                    res.json({playlistID: targetID});
+                    res.json({playlistID: playlistID});
 
                 });
 
