@@ -280,13 +280,9 @@ router.post('/', function(req, res, next) {
 
     console.log('Starting calls');
 
-    for (var i=0; i<final_playlist.length; i++) 
-    {
-        var append = 'spotify::track::';
-        var playlist = final_playlist[i].toString();
-        final_playlist[i] = append+playlist;
-    }
+    
 
+    console.log(final_playlist);
     var final_playlist_JSON_form = {'uris' : final_playlist};
     var final_playlist_query_form = 'uris=';
 
